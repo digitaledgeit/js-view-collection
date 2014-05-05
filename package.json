@@ -1,5 +1,5 @@
 {
-  "name": "collection-view",
+  "name": "view-collection",
   "version": "0.1.0",
   "dependencies": {
     "component-emitter": "1.1.2"
