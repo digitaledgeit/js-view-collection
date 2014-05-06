@@ -105,6 +105,18 @@ module.exports = require('view').create({
 		}
 
 		return this;
+	},
+
+	/**
+	 * Iterates the collection passing each view to the callback
+	 * @param   {function} callback
+	 * @returns {ViewCollection}
+	 */
+	each: function(callback) {
+		for (var i=0; i<this.views.length; ++i) {
+			callback.call(this, this.views[i], i);
+		}
+		return this;
 	}
 
 });
