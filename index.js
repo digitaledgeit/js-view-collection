@@ -2,14 +2,23 @@
  * View collection
  * @constructor
  */
-var ViewCollection = require('view').create({
+module.exports = require('view').create({
 
 	/**
 	 * Initialises the view
-	 * @param {options} options
+	 * @param {object} 				options 		The view options
+	 * @param {HTMLElement|object} 	options.el 		The view element
+	 * @param {options} 			options.views 	The view collection
 	 */
-	init: function() {
+	init: function(options) {
 		this.views = [];
+
+		if (options && options.views) {
+			for (var i=0; i<options.views.length; ++i) {
+				this.append(options.views[i]);
+			}
+		}
+
 	},
 
 	/**
@@ -100,4 +109,3 @@ var ViewCollection = require('view').create({
 
 });
 
-module.exports = ViewCollection;
