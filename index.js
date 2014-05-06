@@ -22,6 +22,31 @@ module.exports = require('view').create({
 	},
 
 	/**
+	 * Gets the number of views
+	 * @returns {integer}
+	 */
+	count: function() {
+		return this.views.length;
+	},
+
+	/**
+	 * Gets whether the collection contains a view
+	 * @returns {boolean}
+	 */
+	contains: function(view) {
+		return this.views.indexOf(view) !== -1;
+	},
+
+	/**
+	 * Returns the view at the index
+	 * @param   {int} index
+	 * @returns {View}
+	 */
+	at: function(index) {
+		return this.views[index];
+	},
+	
+	/**
 	 * Gets the first view
 	 * @returns {View}
 	 */
@@ -35,14 +60,6 @@ module.exports = require('view').create({
 	 */
 	last: function() {
 		return this.views[this.views.length-1];
-	},
-
-	/**
-	 * Gets whether the collection contains a view
-	 * @returns {boolean}
-	 */
-	contains: function(view) {
-		return this.views.indexOf(view) !== -1;
 	},
 
 	/**
