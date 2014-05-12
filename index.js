@@ -76,7 +76,9 @@ module.exports = require('view').create({
 		this.views.unshift(view);
 
 		//append the view to the element
-		this.el.prependChild(view.el);
+		if (this.el.parentNode !== view.el) {
+			this.el.prependChild(view.el);
+		}
 
 		return this;
 	},
@@ -95,7 +97,9 @@ module.exports = require('view').create({
 		this.views.push(view);
 
 		//append the view to the element
-		this.el.appendChild(view.el);
+		if (this.el.parentNode !== view.el) {
+			this.el.appendChild(view.el);
+		}
 
 		return this;
 	},
