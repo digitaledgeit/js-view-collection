@@ -2,7 +2,7 @@
  * View collection
  * @constructor
  */
-module.exports = require('view').create({
+module.exports = require('digitaledgeit-view').create({
 
 	/**
 	 * Initialises the view
