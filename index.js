@@ -1,11 +1,9 @@
-var View = require('view');
-var extend = require('extend');
 
 /**
  * View collection
  * @constructor
  */
-module.exports = extend(View, {
+module.exports = require('view').extend({
 
 	/**
 	 * Initialise the view
