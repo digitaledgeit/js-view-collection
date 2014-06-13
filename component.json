@@ -2,6 +2,7 @@
   "name": "view-collection",
   "scripts": ["index.js"],
   "dependencies": {
-    "component/emitter": "1.1.2"
+    "digitaledgeit/js-extend": "0.1.0",
+	"digitaledgeit/js-view": "0.1.3"
   }
 }

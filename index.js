@@ -1,11 +1,14 @@
+var View = require('view');
+var extend = require('extend');
+
 /**
  * View collection
  * @constructor
  */
-module.exports = require('digitaledgeit-view').create({
+module.exports = extend(View, {
 
 	/**
-	 * Initialises the view
+	 * Initialise the view
 	 * @param {object} 				options 		The view options
 	 * @param {HTMLElement|object} 	options.el 		The view element
 	 * @param {options} 			options.views 	The view collection
@@ -22,7 +25,7 @@ module.exports = require('digitaledgeit-view').create({
 	},
 
 	/**
-	 * Gets the number of views
+	 * Get the number of views
 	 * @returns {integer}
 	 */
 	count: function() {
@@ -30,7 +33,7 @@ module.exports = require('digitaledgeit-view').create({
 	},
 
 	/**
-	 * Gets whether the collection contains a view
+	 * Get whether the collection contains a view
 	 * @returns {boolean}
 	 */
 	contains: function(view) {
@@ -38,7 +41,7 @@ module.exports = require('digitaledgeit-view').create({
 	},
 
 	/**
-	 * Returns the view at the index
+	 * Return the view at the index
 	 * @param   {int} index
 	 * @returns {View}
 	 */
@@ -47,7 +50,7 @@ module.exports = require('digitaledgeit-view').create({
 	},
 	
 	/**
-	 * Gets the first view
+	 * Get the first view
 	 * @returns {View}
 	 */
 	first: function() {
@@ -55,7 +58,7 @@ module.exports = require('digitaledgeit-view').create({
 	},
 
 	/**
-	 * Gets the last view
+	 * Get the last view
 	 * @returns {View}
 	 */
 	last: function() {
@@ -63,7 +66,7 @@ module.exports = require('digitaledgeit-view').create({
 	},
 
 	/**
-	 * Prepends the view to the collection
+	 * Prepend the view to the collection
 	 * @param   {View} view
 	 * @returns {ViewCollection}
 	 */
@@ -84,7 +87,7 @@ module.exports = require('digitaledgeit-view').create({
 	},
 
 	/**
-	 * Appends the view to the collection
+	 * Append the view to the collection
 	 * @param   {View} view
 	 * @returns {ViewCollection}
 	 */
@@ -105,7 +108,7 @@ module.exports = require('digitaledgeit-view').create({
 	},
 
 	/**
-	 * Removes the view from the collection
+	 * Remove the view from the collection
 	 * @param   {View} view
 	 * @returns {ViewCollection}
 	 */
@@ -129,7 +132,18 @@ module.exports = require('digitaledgeit-view').create({
 	},
 
 	/**
-	 * Iterates the collection passing each view to the callback
+	 * Removes all the views from the collection
+	 * @returns {ViewCollection}
+	 */
+	removeAll: function() {
+		while (this.views.length > 0) {
+			this.remove(this.views[0]);
+		}
+		return this;
+	},
+
+	/**
+	 * Iterate the collection passing each view to the callback
 	 * @param   {function} callback
 	 * @returns {ViewCollection}
 	 */
