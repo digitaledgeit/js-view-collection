@@ -18,15 +18,20 @@
                 el: {
                     tag: 'li',
                     content: 'I am '+i
-                }
+                },
+	            events: {
+		            'click': 'emit:click'
+	            }
             }))
         }
 
-        console.log(collection.indexOf(collection.first()));
-        console.log(collection.indexOf(collection.last()));
+        //console.log(collection.indexOf(collection.first()));
+        //console.log(collection.indexOf(collection.last()));
 
         collection.remove(collection.at(4));
-
+        collection.on('click', function() {
+	       console.log('Got proxied click event', arguments);
+        });
         //collection.removeAll();
 
         document.body.appendChild(collection.el);
