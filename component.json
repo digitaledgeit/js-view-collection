@@ -3,6 +3,6 @@
   "scripts": ["index.js"],
   "dependencies": {
     "digitaledgeit/js-extend": "0.1.0",
-	  "digitaledgeit/js-view": "0.1.4"
+	"digitaledgeit/js-view": "0.1.4"
   }
 }

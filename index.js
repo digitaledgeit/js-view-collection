@@ -1,9 +1,10 @@
+var View = require('view');
 
 /**
  * View collection
  * @constructor
  */
-module.exports = require('view').extend({
+module.exports = View.extend({
 
 	/**
 	 * Initialise the view
@@ -64,11 +65,29 @@ module.exports = require('view').extend({
 	},
 
 	/**
+	 * Find the index of a view
+	 * @param   {View} view
+	 * @returns {int}
+	 */
+	indexOf: function(view) {
+
+		if (!view instanceof View) {
+			throw new Error('Parameter is not a view')
+		}
+
+		return this.views.indexOf(view);
+	},
+
+	/**
 	 * Prepend the view to the collection
 	 * @param   {View} view
 	 * @returns {ViewCollection}
 	 */
 	prepend: function(view) {
+
+		if (!view instanceof View) {
+			throw new Error('Parameter is not a view')
+		}
 
 		//set the parent view
 		view.parent = this;
@@ -91,6 +110,10 @@ module.exports = require('view').extend({
 	 */
 	append: function(view) {
 
+		if (!view instanceof View) {
+			throw new Error('Parameter is not a view')
+		}
+
 		//set the parent view
 		view.parent = this;
 
@@ -111,6 +134,10 @@ module.exports = require('view').extend({
 	 * @returns {ViewCollection}
 	 */
 	remove: function(view) {
+
+		if (!view instanceof View) {
+			throw new Error('Parameter is not a view')
+		}
 
 		//find the view
 		var index = this.views.indexOf(view);
