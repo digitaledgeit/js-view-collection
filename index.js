@@ -100,6 +100,23 @@ module.exports = View.extend({
 			this.el.prependChild(view.el);
 		}
 
+		//proxy events
+		var self = this;
+		var emit = view.emit;
+		view.emit = function(type) {
+
+			//emit the event on the view
+			emit.apply(view, arguments);
+
+			//convert the args to an array and add the view as the first argument
+			var args = Array.prototype.slice.call(arguments);
+			args.shift();
+			args.unshift(type, view);
+
+			//emit the event on the collection
+			return self.emit.apply(self, args);
+		};
+
 		return this;
 	},
 
@@ -124,6 +141,23 @@ module.exports = View.extend({
 		if (this.el.parentNode !== view.el) {
 			this.el.appendChild(view.el);
 		}
+
+		//proxy events
+		var self = this;
+		var emit = view.emit;
+		view.emit = function(type) {
+
+			//emit the event on the view
+			emit.apply(view, arguments);
+
+			//convert the args to an array and add the view as the first argument
+			var args = Array.prototype.slice.call(arguments);
+			args.shift();
+			args.unshift(type, view);
+
+			//emit the event on the collection
+			return self.emit.apply(self, args);
+		};
 
 		return this;
 	},
@@ -180,4 +214,3 @@ module.exports = View.extend({
 	}
 
 });
-
