@@ -111,7 +111,7 @@ module.exports = View.extend({
 			//convert the args to an array and add the view as the first argument
 			var args = Array.prototype.slice.call(arguments);
 			args.shift();
-			args.unshift(type, view);
+			args.unshift('proxied:'+type, view);
 
 			//emit the event on the collection
 			return self.emit.apply(self, args);
@@ -153,7 +153,7 @@ module.exports = View.extend({
 			//convert the args to an array and add the view as the first argument
 			var args = Array.prototype.slice.call(arguments);
 			args.shift();
-			args.unshift(type, view);
+			args.unshift('proxied:'+type, view);
 
 			//emit the event on the collection
 			return self.emit.apply(self, args);
