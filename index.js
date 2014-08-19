@@ -89,16 +89,20 @@ module.exports = View.extend({
 			throw new Error('Parameter is not a view')
 		}
 
+		//prepend the view to the element
+		if (this.el.parentNode !== view.el) {
+			if (this.views.length === 0) {
+				this.el.appendChild(view.el);
+			} else {
+				this.el.insertBefore(view.el, this.views[0].el);
+			}
+		}
+		
 		//set the parent view
 		view.parent = this;
 
 		//append the view to the array
 		this.views.unshift(view);
-
-		//append the view to the element
-		if (this.el.parentNode !== view.el) {
-			this.el.prependChild(view.el);
-		}
 
 		//proxy events
 		var self = this;
@@ -131,16 +135,16 @@ module.exports = View.extend({
 			throw new Error('Parameter is not a view')
 		}
 
+		//append the view to the element
+		if (this.el.parentNode !== view.el) {
+			this.el.appendChild(view.el);
+		}
+
 		//set the parent view
 		view.parent = this;
 
 		//append the view to the array
 		this.views.push(view);
-
-		//append the view to the element
-		if (this.el.parentNode !== view.el) {
-			this.el.appendChild(view.el);
-		}
 
 		//proxy events
 		var self = this;
