@@ -29,7 +29,7 @@
         //console.log(collection.indexOf(collection.last()));
 
         collection.remove(collection.at(4));
-        collection.on('proxied:click', function(view) {
+        collection.on('view:click', function(view) {
 	       console.log('Got proxied click event from:', view.el.innerText);
         });
         //collection.removeAll();

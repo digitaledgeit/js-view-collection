@@ -1,4 +1,13 @@
 var View = require('view');
+var forward = require('forward-events');
+
+function proxyEvent(type, arguments, src) {
+  arguments.unshift(src);
+  return {
+    type:       'view:'+type,
+    arguments:  arguments
+  }
+}
 
 /**
  * View collection
@@ -104,22 +113,8 @@ module.exports = View.extend({
 		//append the view to the array
 		this.views.unshift(view);
 
-		//proxy events
-		var self = this;
-		var emit = view.emit;
-		view.emit = function(type) {
-
-			//emit the event on the view
-			emit.apply(view, arguments);
-
-			//convert the args to an array and add the view as the first argument
-			var args = Array.prototype.slice.call(arguments);
-			args.shift();
-			args.unshift('proxied:'+type, view);
-
-			//emit the event on the collection
-			return self.emit.apply(self, args);
-		};
+    //forward events - adjust the event name and prepend the emitter to the arguments
+    forward(view, this, proxyEvent);
 
 		return this;
 	},
@@ -146,22 +141,8 @@ module.exports = View.extend({
 		//append the view to the array
 		this.views.push(view);
 
-		//proxy events
-		var self = this;
-		var emit = view.emit;
-		view.emit = function(type) {
-
-			//emit the event on the view
-			emit.apply(view, arguments);
-
-			//convert the args to an array and add the view as the first argument
-			var args = Array.prototype.slice.call(arguments);
-			args.shift();
-			args.unshift('proxied:'+type, view);
-
-			//emit the event on the collection
-			return self.emit.apply(self, args);
-		};
+    //forward events - adjust the event name and prepend the emitter to the arguments
+    forward(view, this, proxyEvent);
 
 		return this;
 	},
