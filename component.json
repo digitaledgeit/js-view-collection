@@ -2,8 +2,14 @@
   "name": "view-collection",
   "scripts": ["index.js"],
   "dependencies": {
-  	"digitaledgeit/js-extend-class": "~1.0.0",
-  	"digitaledgeit/js-view": "~0.1.4",
-  	"nib-health-funds/forward-events": "~0.1.0"
+  	"digitaledgeit/js-extend-class": "^1.0.0",
+  	"digitaledgeit/js-view": "^0.1.4",
+  	"nib-health-funds/forward-events": "^0.2.0"
+  },
+  "development": {
+    "dependencies": {
+      "component/assert": "*",
+      "digitaledgeit/js-view": "^0.1.4"
+    }
   }
 }

@@ -17,9 +17,9 @@ module.exports = View.extend({
 
 	/**
 	 * Initialise the view
-	 * @param {object} 				options 		The view options
-	 * @param {HTMLElement|object} 	options.el 		The view element
-	 * @param {options} 			options.views 	The view collection
+	 * @param {Object} 				      options 		The view options
+	 * @param {HTMLElement|Object} 	options.el 		The view element
+	 * @param {Array.<View>}        options.views 	The view collection
 	 */
 	init: function(options) {
 		this.views = [];
@@ -34,7 +34,7 @@ module.exports = View.extend({
 
 	/**
 	 * Get the number of views
-	 * @returns {integer}
+	 * @returns {number}
 	 */
 	count: function() {
 		return this.views.length;
@@ -50,7 +50,7 @@ module.exports = View.extend({
 
 	/**
 	 * Return the view at the index
-	 * @param   {int} index
+	 * @param   {number} index
 	 * @returns {View}
 	 */
 	at: function(index) {
@@ -76,7 +76,7 @@ module.exports = View.extend({
 	/**
 	 * Find the index of a view
 	 * @param   {View} view
-	 * @returns {int}
+	 * @returns {number}
 	 */
 	indexOf: function(view) {
 
